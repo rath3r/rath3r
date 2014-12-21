@@ -1,0 +1,56 @@
+// -----------------------------------------------------------------------------
+// Form styles
+// -----------------------------------------------------------------------------
+
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.form {
+
+    input[type=text],
+    input[type=password],
+    button,
+    textarea {
+        @include border-radius(0);
+        border: 1px solid $color-gray;
+        padding: 3px 5px 4px 5px;
+        font-size: $font-size-large;
+        font-family: $font-family-georgia;
+        @include box-sizing(border-box);
+    }
+
+    button {
+        color: $color-white;
+        background-color: $color-gray;
+        font-family: $font-family-arial;
+        padding: 8px 20px;
+        font-weight: normal;
+        border-color: darken($color-gray, 20);
+
+        .ie7 & {
+            padding: 7px 20px 6px 20px;
+        }
+
+        &:hover,
+        &:active {
+            background-color: lighten($color-gray, 7);
+        }
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    label {
+        cursor: pointer;
+        color: $color-gray;
+        font-size: $font-size-xnormal;
+        font-weight: bold;
+        display: block;
+        line-height: 1.2;
+        padding-bottom: 3px;
+    }
+}

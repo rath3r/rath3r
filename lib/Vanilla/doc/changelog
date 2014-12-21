@@ -1,0 +1,32 @@
+2012-01-27 Kasia Gogoglek <kasia.gogolek@living-group.com>
+	* Adding changes to the routes - new option parent_id for choosing who's the route's parent.
+
+2011-01-23 Kasia Gogoglek <kasia.gogolek@living-group.com>
+	* Adding arrow images for smarty modifier order_url
+	* Added non-image display for smarty_modifier_status_display
+
+2011-01-17 Kasia Gogoglek <kasia.gogolek@living-group.com>
+	* Cutting TAG 1.1 
+
+2011-08-02 Kasia Gogoglek <kasia.gogolek@living-group.com>
+	* Basic Cache Redis support set up
+	* Added BasicObject that is parent to Row and Rowset, for any common functions
+	
+2011-07-28 Kasia Gogolek <kasia.gogolek@living-group.com>
+	* Vanilla_MySQL now supports getByField($column_name, $column_value) on Row queries
+
+2011-07-26 Kasia Gogolek <kasia.gogolek@living-group.com>
+	* Vanilla_MySQL class supports operators on params now
+	* Vanilla_Model_User can now generate it's own password
+	* Vanilla_Model you can now specify data source to use, by setting public $data_source_type in row class to a different name, default to MySQL
+	
+2011-07-19 Kasia Gogolek <kasia.gogolek@living-group.com>
+	* Route support added for Files, also supports regex
+
+2011-07-15  Kasia Gogolek  <kasia.gogolek@living-group.com>
+	* Added changelog file
+	* Added Vanilla Debug Class
+	* Added FirePHP libraries used in Vanilla Debug class
+	* Added comments to all MySQL classess and functions
+	* Changed the name of DEBUG_ENABLE constant to DEBUG_ENABLED
+	

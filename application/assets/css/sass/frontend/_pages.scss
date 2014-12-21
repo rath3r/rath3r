@@ -1,0 +1,316 @@
+// -----------------------------------------------------------------------------
+// Page styles
+// -----------------------------------------------------------------------------
+
+header{
+    width: $page-width;
+    margin: auto;
+    
+    section{
+        padding: 20px 30px 20px 30px;
+        
+        article{
+            
+        }
+        article.left{
+            position: relative;
+            width: 480px;
+            float: left;
+            h1{
+                margin: 40px 0;
+            }
+            .strikeOut{
+                position: absolute;
+                background-color: $color-black;
+            }
+        }
+        
+        article.right{
+            width: 380px;
+            float: right;
+            margin-right: 60px;
+            h2{
+                line-height: 28px;
+            }
+            p{
+                line-height: 20px;
+                margin: 25px 0 0 0;
+            }
+        }
+    }
+}
+
+section.middle{
+     
+    div.middle-wrapper{
+        width: $page-width;
+        margin: auto;
+        padding: 55px 0 55px 0;
+        
+        article.left{
+            width: 390px;
+            float: left;
+            div.icon{
+                margin: auto;
+                display: block;
+            }
+        }
+        
+        article.right{
+            width: 475px;
+            float: right;
+            margin-right: 155px;
+            h3{
+                line-height: 30px;
+                margin: 0 0 30px 0;
+            }
+            h4{
+                line-height: 30px;
+                margin: 0 0 30px 0;
+            }
+            p{
+                line-height: 20px;
+            }
+            p.last{
+                margin: 0 0 35px 0;
+            }
+            p.noMargin{
+                margin: 0;
+            }
+            a{
+                color: $color-white;
+            }
+        }
+    }
+}
+
+.home{
+	header{
+	    section{
+	        article.left{
+	            h1{
+    	           	color: $color-turquoise;
+    	        }
+	        }
+        }
+    }
+    section.middle{
+        div.middle-wrapper{
+            article.left{
+                div.icon{
+                    width: 228px;
+                }
+            }
+        }
+    }
+}
+
+.image{
+	header{
+	    section{
+	        article.left{
+	            h1{
+    	           	color: $color-purple;
+    	        }
+	        }
+        }
+    }
+    section.middle{
+        div.middle-wrapper{
+            article.left{
+                div.icon{
+                    width: 162px;
+                }
+            }
+        }
+    }
+}
+
+.partnering{
+	header{
+	    section{
+	        article.left{
+	            h1{
+    	           	color: $color-teal;
+    	        }
+	        }
+        }
+    }
+    section.middle{
+        div.middle-wrapper{
+            article.left{
+                div.icon{
+                    width: 230px;
+                }
+            }
+        }
+    }
+}
+
+.contact{
+	header{
+	    section{
+	        article.left{
+	            h1{
+    	           	color: $color-orange;
+    	        }
+	        }
+        }
+    }
+    section.middle{
+        div.middle-wrapper{
+            article.left{
+                div.icon{
+                    width: 178px;
+                }
+            }
+        }
+    }
+}
+
+footer{
+    background-color: $color-black;
+    div.footer-wrapper{
+        div.column-wrapper{
+            width: $page-width - 60;
+            margin: auto;
+            padding: 30px 30px 30px 30px;
+
+            article{
+                float: left;
+                width: 240px;
+                min-height: 170px;
+                h3, p{
+                    color: $color-white;
+                }
+
+                h3{
+                    font-size: 18px;
+
+                }
+                p{
+                    font-size: 12px;
+                }
+                span.phoneNumber{
+                    margin: 10px 0 0 0;
+                    display: block;
+                    font-size: 16px;
+                    color: $color-white !important;
+                }
+                .headerHolder{
+                    margin: 0 0 20px 0;
+                    h3{
+                        float: left;
+                    }
+                    div{
+                        float: right;
+                    }
+                }
+                .dl-holder{
+                    width: 110px;
+                    h3{
+                        margin: 18px 0 0 0;
+                    }
+                    div{
+                        margin: 4px 0 0 0;
+                    }
+                }
+                .about-holder{
+                    width: 95px;
+                    h3{
+                        margin: 18px 0 0 0;
+                    }
+                    div{
+                        margin: 1px 0 0 0;
+                    }
+                }
+                .contact-holder{
+                    width: 120px;
+                    h3{
+                        margin: 18px 0 0 0;
+                    }
+                    div{
+                        margin: 1px 0 0 0;
+                    }
+                }
+                .logo{
+                    display: block;
+                }
+            }
+        }
+    }
+    div.copyright{
+        width: $page-width - 60;
+        margin: auto;
+        padding:  0 30px 30px 30px;
+        display: block;
+        color: #919191;
+        font-size: 12px;
+        
+        .privacy{
+            margin: 0 0 0 60px;
+            a{
+                color: #919191;
+            }
+        }
+        
+        .siteBy{
+            display: block;
+            float: right;
+            a{
+                color: #919191;
+            }
+        }
+    }
+}
+
+.contact{
+    .middle{
+        .middle-wrapper{
+            .right{
+                .emailSuccess{
+                    background-color: $color-white;
+                    padding: 5px;
+                    font-weight: bold;
+                    margin: 0 0 30px 0;
+                }
+                form{
+                    label.top{
+                        display: inline-block;
+                        width: 115px;
+                        margin: 10px 0;
+                    }
+                    input.top{
+                        display: inline;
+                        margin: 10px 0;
+                        width: 285px;
+                    }
+                    input.required{
+                        border: 2px solid $color-red;
+                    }
+                    p{
+                        margin: 10px 0;
+                    }
+                    p.errorMessage{
+                        color: $color-red;
+                        margin: 0 0 0 120px;
+                    }
+                    label.bottom{
+                        margin: 10px 0;
+                    }
+                    input.bottom{
+                        
+                        margin: 10px;
+                    }
+                    input.submit{
+                        width: 150px;
+                        margin: 10px 0px;
+                        background-color: $color-secondary-red;
+                        color: $color-white;
+                        border: 1px solid $color-secondary-red;
+                    }
+                }
+            }
+        }
+    }
+}

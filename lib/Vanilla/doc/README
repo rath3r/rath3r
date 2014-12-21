@@ -1,0 +1,15 @@
+=== VANILLA LIBRARIES ===
+This is the basic vanilla framework
+The latest version is 1.2
+
+=== COMPATIBILITY ===
+This version is only compatible with:
+
+* Users ver >= 1.2
+* Files ver >= 1.2
+
+=== UPGRADE ===
+If you wish to upgrade your application to version 1.2 please 
+
+1 . Make sure you add parent_id option to relevant routes 
+    @example parent_id="admin"
