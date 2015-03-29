@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<phpunit bootstrap="./_bootstrap.php" colors="true">
-<testsuite name='Vanilla Tests'>
-    <directory suffix='.php'>./</directory>
-</testsuite>
-</phpunit>
