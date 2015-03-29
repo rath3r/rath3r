@@ -46,7 +46,4 @@ angular.module('rath3rApp')
 
         console.log('hello');
 
-
-
-
     });
