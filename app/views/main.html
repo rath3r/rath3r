@@ -7,8 +7,9 @@
             <img class="center" src="/images/loading.gif" ng-show="loading" />
         </div>
 
-        <div  ng-repeat="post in posts">
-            <h2>{{post.title}}</h2>
+        <div class="post-listing"  ng-repeat="post in posts">
+
+            <a href="{{post.URL}}"><h2 ng-bind-html="post.title"></h2></a>
             <div ng-bind-html="post.excerpt"></div>
 
         </div>

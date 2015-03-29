@@ -1,1 +1,1 @@
-<div class="row"> <div class="col-md-8"> <div id="loading"> <img class="center" src="/images/loading.gif" ng-show="loading"> </div> <div ng-repeat="post in posts"> <h2>{{post.title}}</h2> <div ng-bind-html="post.excerpt"></div> </div> </div> </div>
+<div class="row"> <div class="col-md-8"> <div id="loading"> <img class="center" src="/images/loading.gif" ng-show="loading"> </div> <div class="post-listing" ng-repeat="post in posts"> <a href="{{post.URL}}"><h2 ng-bind-html="post.title"></h2></a> <div ng-bind-html="post.excerpt"></div> </div> </div> </div>
