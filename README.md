@@ -11,14 +11,14 @@ version 0.11.1.
 
 I removed the use of the `#/` in the url by following this instructions - [pretty-urls-in-angularjs-removing-the-hashtag](https://scotch.io/quick-tips/pretty-urls-in-angularjs-removing-the-hashtag)
  
-Add to the `.htaccess`
+Add to the `.htaccess` also stored in `app/`
 
-    RewriteCond %{REQUEST_FILENAME} -s [OR]
-    RewriteCond %{REQUEST_FILENAME} -l [OR]
-    RewriteCond %{REQUEST_FILENAME} -d
-    RewriteRule ^.*$ - [NC,L]
-    
-    RewriteRule ^(.*) /index.html [NC,L]
+    RewriteEngine On
+    RewriteBase /
+    RewriteCond     %{REQUEST_URI} !^(/index\.php|/img|/js|/css|/robots\.txt|/favicon\.ico)
+    RewriteCond     %{REQUEST_FILENAME} !-f
+    RewriteCond     %{REQUEST_FILENAME} !-d
+    RewriteRule     .               /index.html              [L]
 
 ## Build & development
 
