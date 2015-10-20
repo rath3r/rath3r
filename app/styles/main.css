@@ -92,6 +92,11 @@ body {
     display: none;
 }
 
+.post img {
+    width: 100%;
+    height: auto;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
