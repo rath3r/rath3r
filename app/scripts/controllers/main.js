@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * @ngdoc function
  * @name rath3rApp.controller:MainCtrl
@@ -7,45 +5,31 @@
  * # MainCtrl
  * Controller of the rath3rApp
  */
-angular.module('rath3rApp')
-    .controller('MainCtrl', function ($scope, $http) {
+rath3rApp.controller('mainCtrl', function($scope, $http) {
 
-        $scope.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma'
-        ];
+    // create a message to display in our view
+    $scope.message = '';
 
-        $scope.posts = {
-            title: 'Loading'
-        };
+    $scope.posts = {
+        title: 'Loading'
+    };
 
-        $scope.loading = true;
+    $scope.loading = true;
 
-        $http.get('https://public-api.wordpress.com/rest/v1.1/sites/blog.rath3r.com/posts/').
-            success(function(data) {
+    $scope.posts = {};
 
-                // , status, headers, config
-                //console.log(status);
-                //console.log(headers);
-                //console.log(config);
-                //console.log(data.posts);
+    $http.get('https://public-api.wordpress.com/rest/v1.1/sites/blog.rath3r.com/posts/').
+        success(function(data) {
 
-                $scope.posts = {};
+            $scope.posts = data.posts;
 
-                //for(post in data[posts]){
-                //    console.log(post);
-                //}
+            $scope.loading = false;
 
-                $scope.posts = data.posts;
+        }).
+        error(function() {
+            //data, status, headers, config
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
 
-                $scope.loading = false;
-
-            }).
-            error(function() {
-                //data, status, headers, config
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
-
-    });
+});

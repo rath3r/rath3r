@@ -34,21 +34,38 @@ module.exports = function (grunt) {
                 files: ['bower.json'],
                 tasks: ['wiredep']
             },
-            js: {
+            scripts: {
                 files: ['<%= settings.app %>/scripts/{,*/}*.js'],
-                tasks: ['newer:jshint:all'],
+                tasks: ['concat:scripts'],
             },
-            jsTest: {
-                files: ['test/spec/{,*/}*.js'],
-                tasks: ['newer:jshint:test', 'karma']
+            js: {
+                files: ['<%= settings.dist %>/scripts/{,*/}*.js'],
+                tasks: ['newer:jshint:dist'],
             },
             styles: {
-                files: ['<%= settings.app %>/styles/{,*/}*.css'],
-                tasks: ['newer:copy:styles', 'autoprefixer']
+                files: ['<%= settings.app %>/styles/{,*/}*.less'],
+                tasks: ['less', 'autoprefixer:dist']
             },
-            gruntfile: {
-                files: ['Gruntfile.js']
+            cssmin: {
+                files: ['<%= settings.tmp %>/styles/{,*/}*.css'],
+                tasks: ['cssmin']
             },
+            index: {
+                files: [
+                    '<%= settings.app %>index.html'
+                ],
+                tasks: ['copy:index']
+            },
+            views: {
+                files: [
+                    '<%= settings.app %>/views/{,*/}*.html'
+                ],
+                tasks: ['newer:copy:views']
+            },
+            usemin: {
+                files: ['<%= settings.app %>{,*/}*.html'],
+                tasks: ['usemin']
+            }
         },
 
         // Make sure code styles are up to par and there are no obvious mistakes
@@ -61,6 +78,11 @@ module.exports = function (grunt) {
                 src: [
                     'Gruntfile.js',
                     '<%= settings.app %>/scripts/{,*/}*.js'
+                ]
+            },
+            dist: {
+                src: [
+                    '<%= settings.dist %>/scripts/main.js'
                 ]
             },
             test: {
@@ -159,7 +181,7 @@ module.exports = function (grunt) {
                         steps: {
                             js: [
                                 'concat',
-                                //'uglifyjs'
+                                'uglifyjs'
                             ],
                             css: ['cssmin']
                         },
@@ -174,27 +196,28 @@ module.exports = function (grunt) {
             html: ['<%= settings.dist %>/{,*/}*.html'],
             css: ['<%= settings.dist %>/styles/{,*/}*.css'],
             options: {
-            assetsDirs: [
-                '<%= settings.dist %>',
-                '<%= settings.dist %>/images',
-                '<%= settings.dist %>/styles'
-            ]
+                assetsDirs: [
+                    '<%= settings.dist %>',
+                    '<%= settings.dist %>/images',
+                    '<%= settings.dist %>/styles'
+                ]
             }
         },
+
 
         // The following *-min tasks will produce minified files in the dist folder
         // By default, your `index.html`'s <!-- Usemin block --> will take care of
         // minification. These next options are pre-configured if you do not wish
         // to use the Usemin blocks.
-        // cssmin: {
-        //   dist: {
-        //     files: {
-        //       '<%= settings.dist %>/styles/main.css': [
-        //         '.tmp/styles/{,*/}*.css'
-        //       ]
-        //     }
-        //   }
-        // },
+        cssmin: {
+            dist: {
+                files: {
+                    '<%= settings.dist %>/styles/main.css': [
+                        '<%= settings.tmp %>/styles/{,*/}*.css'
+                    ]
+                }
+            }
+        },
         // uglify: {
         //   dist: {
         //     files: {
@@ -204,9 +227,15 @@ module.exports = function (grunt) {
         //     }
         //   }
         // },
-        // concat: {
-        //   dist: {}
-        // },
+         concat: {
+            scripts: {
+                files: {
+                    '<%= settings.dist %>/scripts/main.js': [
+                        '<%= settings.app %>/scripts/{,*/}*.js'
+                    ]
+                }
+            }
+         },
 
         imagemin: {
             dist: {
@@ -279,8 +308,6 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,png,txt}',
                         '.htaccess',
-                        '*.html',
-                        'views/{,*/}*.html',
                         'images/{,*/}*.{webp}',
                         'styles/fonts/{,*/}*.*'
                     ]
@@ -301,6 +328,22 @@ module.exports = function (grunt) {
                 cwd: '<%= settings.app %>/styles',
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
+            },
+            index: {
+                expand: true,
+                cwd: '<%= settings.app %>',
+                dest: '<%= settings.dist %>',
+                src: [
+                    'index.html',
+                ]
+            },
+            views: {
+                expand: true,
+                cwd: '<%= settings.app %>',
+                dest: '<%= settings.dist %>',
+                src: [
+                    'views/{,*/}*.html',
+                ]
             }
         },
 
@@ -319,6 +362,14 @@ module.exports = function (grunt) {
             ]
         },
 
+        less: {
+            dist: {
+                files: {
+                    "<%= settings.tmp %>/styles/main.css": "<%= settings.app %>/styles/less/main.less"
+                }
+            },
+        },
+
         // Test settings
         karma: {
             unit: {
@@ -329,7 +380,7 @@ module.exports = function (grunt) {
     });
 
 
-    grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
+    grunt.registerTask('serve', 'Compile then start a connectconnect web server', function (target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'connect:dist:keepalive']);
         }
@@ -358,21 +409,24 @@ module.exports = function (grunt) {
         'karma'
     ]);
 
+    //'cdnify',
     grunt.registerTask('build', [
         'clean:dist',
-        //'wiredep',
+        'wiredep',
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
         'concat',
         'ngAnnotate',
         'copy:dist',
-        //'cdnify',
+        'copy:index',
+        'copy:views',
+        'less',
         'cssmin',
-        //'uglify',
+        'uglify',
         //'filerev',
         'usemin',
-        'htmlmin'
+        //'htmlmin'
     ]);
 
     grunt.registerTask('default', [

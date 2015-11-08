@@ -209,14 +209,26 @@ AddDefaultCharset utf-8
 # http://www.rackspace.com/knowledge_center/frequently-asked-question/why-is-mod-rewrite-not-working-on-my-site
 
 <IfModule mod_rewrite.c>
+
+  #  FallbackResource /index.html
+
     Options +FollowSymlinks
   # Options +SymLinksIfOwnerMatch
     RewriteEngine On
-    RewriteBase /
-    RewriteCond     %{REQUEST_URI} !^(/index\.php|/img|/js|/css|/robots\.txt|/favicon\.ico)
-    RewriteCond     %{REQUEST_FILENAME} !-f
-    RewriteCond     %{REQUEST_FILENAME} !-d
-    RewriteRule     .               /index.html              [L]
+
+  # Don't rewrite files or directories
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+  # Rewrite everything else to index.html to allow html5 state links
+    RewriteRule ^ index.html [L]
+
+  #  RewriteBase /
+  #  RewriteCond     %{REQUEST_URI} !^(/index\.php|/img|/js|/css|/robots\.txt|/favicon\.ico)
+  #  RewriteCond     %{REQUEST_FILENAME} !-f
+  #  RewriteCond     %{REQUEST_FILENAME} !-d
+  #  RewriteRule     .               /index.html              [L]
   #  RewriteCond %{REQUEST_FILENAME} -s [OR]
   #  RewriteCond %{REQUEST_FILENAME} -l [OR]
   #  RewriteCond %{REQUEST_FILENAME} -d

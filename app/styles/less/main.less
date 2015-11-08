@@ -1,20 +1,6 @@
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
-
-@font-face {
-    font-family: 'BebasNeue';
-    src: url('fonts/BebasNeue-webfont.eot');
-    src: url('fonts/BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
-    url('fonts/BebasNeue-webfont.woff') format('woff'),
-    url('fonts/BebasNeue-webfont.ttf') format('truetype'),
-    url('fonts/BebasNeue-webfont.svg#BebasNeue') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
+@import "../../../bower_components/bootstrap/less/bootstrap";
+@import "fonts";
+@import "general";
 
 
 body {
@@ -38,7 +24,7 @@ body {
 }
 
 .navbar-brand{
-    font-family: "BebasNeue", sans-serif;
+    font-family: @BebasNeue;
     font-size: 52px;
 }
 .navbar-brand:hover,
