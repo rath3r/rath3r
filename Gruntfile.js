@@ -38,10 +38,10 @@ module.exports = function (grunt) {
                 files: ['<%= settings.app %>/scripts/{,*/}*.js'],
                 tasks: ['concat:scripts'],
             },
-            js: {
-                files: ['<%= settings.dist %>/scripts/{,*/}*.js'],
-                tasks: ['newer:jshint:dist'],
-            },
+            //js: {
+            //    files: ['<%= settings.dist %>/scripts/{,*/}*.js'],
+            //    tasks: ['newer:jshint:dist'],
+            //},
             styles: {
                 files: ['<%= settings.app %>/styles/{,*/}*.less'],
                 tasks: ['less', 'autoprefixer:dist']

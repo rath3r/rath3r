@@ -31,62 +31,56 @@ rath3rApp.controller('aboutCtrl', function($scope, $http) {
 
     function loadData(skills) {
 
-        var skillsdatelast = Math.max.apply(null,
-                Object.keys(skills).map(function(e) {
-                    return Date.parse(skills[e].dateStarted);
-                })
-            ),
-            skillsdatefirst = Math.min.apply(null,
-                Object.keys(skills).map(function(e) {
-                    return Date.parse(skills[e].dateStarted);
-                })
-            ),
-            currentDateObj = new Date(),
-            currentDate = currentDateObj.getTime(),
-            currentYear,
-            data = [],
-            diff,
-            translateY,
-            currentDiff,
+        var skillStartTime,
+            skillStartTimeObj,
+            skillStartYear,
+            skillEndTime,
+            totalTime,
+            totalYear,
             width = 700,
+            pxpertime,
+            currentTimeObj = new Date(),
+            currentTime = currentTimeObj.getTime(),
+            currentYear = currentTimeObj.getFullYear(),
+            data = [],
+            translateY,
+            skillWidth,
             barHeight = 20,
             chart,
-            bar,
-            myDate,
-            currentWidth,
-            translateWidthY,
-            skillsdatefirstObj,
-            skillStartYear;
+            bar;
 
-        diff = currentDate - skillsdatefirst;
+        skillStartTime = Math.min.apply(null,
+            Object.keys(skills).map(function(e) {
+                return Date.parse(skills[e].dateStarted);
+            })
+        );
 
-        skillsdatefirstObj = new Date(skillsdatefirst);
-        skillStartYear = skillsdatefirstObj.getFullYear();
-        currentYear = currentDateObj.getFullYear();
+        skillEndTime = Math.max.apply(null,
+            Object.keys(skills).map(function(e) {
+                return Date.parse(skills[e].dateStarted);
+            })
+        );
+
+        totalTime = currentTime - skillStartTime;
+
+        skillStartTimeObj = new Date(skillStartTime);
+        skillStartYear = skillStartTimeObj.getFullYear();
+
+        //totalYear =
+
+        pxpertime = width / totalTime;
 
         for(var i = 0; i < skills.length; i++){
 
-            currentDiff = currentDate - Date.parse(skills[i].dateStarted);
+            translateY = Math.ceil((Date.parse(skills[i].dateStarted) - skillStartTime) * pxpertime);
 
-            if (diff == currentDiff) {
-                translateY = 0;
-            } else {
-                translateY = (currentDiff * width) / diff;
-            }
-
-
-            if (skills[i].stillUsing == 1) {
-                translateWidthY = (currentDate * width) / diff;
-            } else {
-                currentWidth = Date.parse(skills[i].dateFinished);
-                translateWidthY = ((currentDate - currentWidth) * width) / diff;
-            }
+            skillWidth = Math.ceil((currentTime - Date.parse(skills[i].dateStarted)) * pxpertime);
 
             data.push(
                 {
                     y       : translateY,
                     title   : skills[i].title,
-                    width   : translateWidthY
+                    width   : skillWidth
                 }
             );
         }
