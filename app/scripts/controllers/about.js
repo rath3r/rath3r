@@ -74,7 +74,11 @@ rath3rApp.controller('aboutCtrl', function($scope, $http) {
 
             translateY = Math.ceil((Date.parse(skills[i].dateStarted) - skillStartTime) * pxpertime);
 
-            skillWidth = Math.ceil((currentTime - Date.parse(skills[i].dateStarted)) * pxpertime);
+            if(skills[i].dateFinished && !skills[i].stillUsing) {
+                skillWidth = Math.ceil((Date.parse(skills[i].dateFinished) - Date.parse(skills[i].dateStarted)) * pxpertime);
+            } else {
+                skillWidth = Math.ceil((currentTime - Date.parse(skills[i].dateStarted)) * pxpertime);
+            }
 
             data.push(
                 {
