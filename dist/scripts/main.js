@@ -1,1 +1,247 @@
-"use strict";var rath3rApp=angular.module("rath3rApp",["ngRoute","ngSanitize"]);rath3rApp.config(["$routeProvider","$locationProvider",function(a,b){a.when("/",{templateUrl:"views/main.html",controller:"mainCtrl"}).when("/post/:id",{templateUrl:"views/post.html",controller:"postCtrl"}).when("/about",{templateUrl:"views/about.html",controller:"aboutCtrl"}),b.html5Mode(!0)}]),rath3rApp.controller("mainCtrl",["$scope","$http",function(a,b){a.message="",a.posts={title:"Loading"},a.loading=!0,a.posts={},b.get("https://public-api.wordpress.com/rest/v1.1/sites/blog.rath3r.com/posts/").success(function(b){a.posts=b.posts,a.loading=!1}).error(function(){})}]),rath3rApp.controller("aboutCtrl",["$scope","$http",function(a,b){function c(a){var b,c,d,e,f,g,h,i,j,k,l=700,m=new Date,n=m.getTime(),o=m.getFullYear(),p=[],q=20;b=Math.min.apply(null,Object.keys(a).map(function(b){return Date.parse(a[b].dateStarted)})),e=Math.max.apply(null,Object.keys(a).map(function(b){return Date.parse(a[b].dateStarted)})),f=n-b,c=new Date(b),d=c.getFullYear(),g=l/f;for(var r=0;r<a.length;r++)h=Math.ceil((Date.parse(a[r].dateStarted)-b)*g),i=Math.ceil(a[r].dateFinished&&!a[r].stillUsing?(Date.parse(a[r].dateFinished)-Date.parse(a[r].dateStarted))*g:(n-Date.parse(a[r].dateStarted))*g),p.push({y:h,title:a[r].title,width:i});j=d3.select(".chart").attr("width",l).attr("height",q*p.length+100),k=j.selectAll("g").data(p).enter().append("g").attr("transform",function(a,b){return"translate("+a.y+","+(b*q+20)+")"}),k.append("rect").attr("width",function(a,b){return a.width}).attr("height",q-1),k.append("text").attr("x",function(a){return 10}).attr("y",q/2).attr("dy",".35em").text(function(a){return a.title}),d3.select(".chart").append("text").attr("class","label").attr("x",0).attr("y",10).attr("dy",".35em").text(d),d3.select(".chart").append("text").attr("class","label").attr("x",l-25).attr("y",10).attr("dy",".35em").text(o)}a.message="This is the about page?",a.posts={title:"Loading"},a.loading=!0,b.get("http://data.rath3r.com/json").success(function(b){c(b),a.loading=!1}).error(function(){})}]),rath3rApp.controller("postCtrl",["$http","$scope","$routeParams",function(a,b,c){b.post={},b.loading=!0;var d="https://public-api.wordpress.com/rest/v1.1/sites/blog.rath3r.com/posts/"+c.id;a.get(d).success(function(a){b.post=a,b.loading=!1}).error(function(){})}]);
+'use strict';
+
+/**
+ * @ngdoc overview
+ * @name rath3rApp
+ * @description
+ * # rath3rApp
+ *
+ * Main module of the application.
+ */
+var rath3rApp = angular.module('rath3rApp', [
+    'ngRoute',
+    'ngSanitize'
+]);
+
+rath3rApp.config(function($routeProvider, $locationProvider) {
+    $routeProvider
+
+        // route for the home page
+        .when('/', {
+            templateUrl : 'views/main.html',
+            controller  : 'mainCtrl'
+        })
+
+        .when('/post/:id', {
+            templateUrl: 'views/post.html',
+            controller: 'postCtrl'
+        })
+        // route for the about page
+        .when('/about', {
+            templateUrl : 'views/about.html',
+            controller  : 'aboutCtrl'
+        });
+
+        // use the HTML5 History API
+        $locationProvider.html5Mode(true);
+
+});
+
+/**
+* @ngdoc function
+* @name rath3rApp.controller:asboutCtrl
+* @description
+* # AboutCtrl
+* Controller of the rath3rApp
+*/
+rath3rApp.controller('aboutCtrl', function($scope, $http) {
+
+  $scope.message = 'This is the about page?';
+
+  $scope.posts = {
+    title: 'Loading'
+  };
+
+  $scope.loading = true;
+
+  $http.get('http://data.rath3r.com/json').success(function(data) {
+    loadData(data);
+    $scope.loading = false;
+  }).error(function() {
+    //data, status, headers, config
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+  });
+
+  function loadData(skills) {
+
+    var skillStartTime,
+        skillStartTimeObj,
+        skillStartYear,
+        skillEndTime,
+        totalTime,
+        totalYear,
+        width = 700,
+        pxpertime,
+        currentTimeObj = new Date(),
+        currentTime = currentTimeObj.getTime(),
+        currentYear = currentTimeObj.getFullYear(),
+        data = [],
+        translateY,
+        skillWidth,
+        barHeight = 20,
+        chart,
+        bar;
+
+    function compare(a,b) {
+      if (a.dateStarted < b.dateStarted) {
+        return -1;
+      }
+      if (a.dateStarted > b.dateStarted) {
+          return 1;
+      }
+      return 0;
+    }
+
+    skills.sort(compare);
+
+    skillStartTime = Math.min.apply(null,
+      Object.keys(skills).map(function(e) {
+        return Date.parse(skills[e].dateStarted);
+      })
+    );
+
+    skillEndTime = Math.max.apply(null,
+      Object.keys(skills).map(function(e) {
+        return Date.parse(skills[e].dateStarted);
+      })
+    );
+
+    totalTime = currentTime - skillStartTime;
+
+    skillStartTimeObj = new Date(skillStartTime);
+    skillStartYear = skillStartTimeObj.getFullYear();
+
+    pxpertime = width / totalTime;
+
+    for(var i = 0; i < skills.length; i++){
+
+      translateY = Math.ceil(
+        (Date.parse(skills[i].dateStarted) - skillStartTime) * pxpertime
+      );
+
+      if(skills[i].dateFinished && !skills[i].stillUsing) {
+        skillWidth = Math.ceil(
+          (Date.parse(skills[i].dateFinished) - Date.parse(skills[i].dateStarted)) * pxpertime
+        );
+      } else {
+        skillWidth = Math.ceil(
+          (currentTime - Date.parse(skills[i].dateStarted)) * pxpertime
+        );
+      }
+
+      data.push({
+        y       : translateY,
+        title   : skills[i].title,
+        width   : skillWidth
+      });
+    }
+
+    chart = d3.select(".chart")
+      .attr("width", width)
+      .attr("height", ((barHeight * data.length) + 100));
+
+    bar = chart.selectAll("g")
+      .data(data)
+      .enter().append("g")
+      .attr("transform", function(d, i) {
+        return "translate(" + d.y + "," + ((i * barHeight) + 20) + ")";
+      });
+
+    bar.append("rect")
+      .attr("width", function(d, i) {
+        return d.width;
+      })
+      .attr("height", barHeight - 1);
+
+    bar.append("text")
+      .attr("x", function(d) { return 10; })
+      .attr("y", barHeight / 2)
+      .attr("dy", ".35em")
+      .text(function(d) {
+        return d.title;
+      });
+
+    d3.select(".chart")
+      .append("text")
+      .attr("class", "label")
+      .attr("x", 0)
+      .attr("y", 10)
+      .attr("dy", ".35em")
+      .text(skillStartYear);
+
+    d3.select(".chart")
+      .append("text")
+      .attr("class", "label")
+      .attr("x", (width - 25))
+      .attr("y", 10)
+      .attr("dy", ".35em")
+      .text(currentYear);
+
+  }
+});
+
+/**
+ * @ngdoc function
+ * @name rath3rApp.controller:MainCtrl
+ * @description
+ * # MainCtrl
+ * Controller of the rath3rApp
+ */
+rath3rApp.controller('mainCtrl', function($scope, $http) {
+
+    // create a message to display in our view
+    $scope.message = '';
+
+    $scope.posts = {
+        title: 'Loading'
+    };
+
+    $scope.loading = true;
+
+    $scope.posts = {};
+
+    $http.get('https://public-api.wordpress.com/rest/v1.1/sites/blog.rath3r.com/posts/').
+        success(function(data) {
+
+            $scope.posts = data.posts;
+
+            $scope.loading = false;
+
+        }).
+        error(function() {
+            //data, status, headers, config
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+
+});
+/**
+ * @ngdoc function
+ * @name rath3rApp.controller:MainCtrl
+ * @description
+ * # MainCtrl
+ * Controller of the rath3rApp
+ */
+rath3rApp.controller('postCtrl', function($http, $scope, $routeParams) {
+
+    $scope.post = {};
+
+    $scope.loading = true;
+
+    var postUrl = 'https://public-api.wordpress.com/rest/v1.1/sites/blog.rath3r.com/posts/' + $routeParams.id;
+
+    $http.get(postUrl).
+        success(function(data) {
+
+            $scope.post = data;
+
+            $scope.loading = false;
+
+        }).
+        error(function() {
+            //data, status, headers, config
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+});
