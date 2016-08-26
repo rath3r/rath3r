@@ -15,7 +15,8 @@ rath3rApp.controller('aboutCtrl', function($scope, $http) {
 
   $scope.loading = true;
 
-  $http.get('http://data.rath3r.com/json').success(function(data) {
+  // $http.get('http://data.rath3r.com/json').success(function(data) {
+  $http.get('http://dev.rath3rapi.com/json/skills').success(function(data) {
     loadData(data);
     $scope.loading = false;
   }).error(function() {
@@ -32,7 +33,7 @@ rath3rApp.controller('aboutCtrl', function($scope, $http) {
         skillEndTime,
         totalTime,
         totalYear,
-        width = 700,
+        width = $("#chartHolder").width(),
         pxpertime,
         currentTimeObj = new Date(),
         currentTime = currentTimeObj.getTime(),

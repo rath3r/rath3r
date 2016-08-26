@@ -50,21 +50,24 @@ module.exports = function (grunt) {
                 files: ['<%= settings.tmp %>/styles/{,*/}*.css'],
                 tasks: ['cssmin']
             },
-            index: {
-                files: [
-                    '<%= settings.app %>index.html'
-                ],
-                tasks: ['copy:index']
-            },
+            // index: {
+            //     files: [
+            //         '<%= settings.app %>index.html'
+            //     ],
+            //     tasks: ['copy:index']
+            // },
             views: {
                 files: [
                     '<%= settings.app %>/views/{,*/}*.html'
                 ],
-                tasks: ['newer:copy:views']
+                tasks: ['copy:views']
             },
             usemin: {
                 files: ['<%= settings.app %>{,*/}*.html'],
-                tasks: ['usemin']
+                tasks: [
+                  'copy:index',
+                  'usemin'
+                ]
             }
         },
 
