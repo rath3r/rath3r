@@ -1,4 +1,5 @@
 @import "../../../bower_components/bootstrap/less/bootstrap";
+@import "settings";
 @import "fonts";
 @import "general";
 
@@ -70,7 +71,7 @@ body {
 }
 #loading img {
     width: 80px;
-    margin: 120px 0;
+    // margin: 120px 0;
 }
 
 .sharedaddy,
@@ -82,10 +83,14 @@ body {
     width: 100%;
     height: auto;
 }
-
-
+#chartHolder{
+  height: auto;
+}
+.chart {
+  // height: 0;
+}
 .chart rect {
-  fill: steelblue;
+  fill: @dark-grey;
 }
 
 .chart text {
@@ -94,13 +99,13 @@ body {
 }
 
 .chart p {
-  color: steelblue;
+  color: @black;
   font: 10px sans-serif;
 }
 
 .chart {
   .label {
-    fill: steelblue;
+    fill: @dark-grey;
   }
 }
 

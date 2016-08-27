@@ -52,19 +52,25 @@ rath3rApp.controller('aboutCtrl', function($scope, $http) {
     title: 'Loading'
   };
 
-  $scope.loading = true;
+  $scope.skillsLoader = true;
+  $scope.sitesLoader = true;
 
   // $http.get('http://data.rath3r.com/json').success(function(data) {
   $http.get('http://dev.rath3rapi.com/json/skills').success(function(data) {
-    loadData(data);
-    $scope.loading = false;
+    loadSkills(data);
+    $scope.skillsLoader = false;
   }).error(function() {
     //data, status, headers, config
     // called asynchronously if an error occurs
     // or server returns response with an error status.
   });
 
-  function loadData(skills) {
+  $http.get('http://dev.rath3rapi.com/json/sites').success(function(data) {
+    loadSites(data);
+    $scope.sitesLoader = false;
+  }).error(function() {});
+
+  function loadSkills(skills) {
 
     var skillStartTime,
         skillStartTimeObj,
@@ -140,7 +146,7 @@ rath3rApp.controller('aboutCtrl', function($scope, $http) {
 
     chart = d3.select(".chart")
       .attr("width", width)
-      .attr("height", ((barHeight * data.length) + 100));
+      .attr("height", ((barHeight * data.length)));
 
     bar = chart.selectAll("g")
       .data(data)
@@ -180,43 +186,54 @@ rath3rApp.controller('aboutCtrl', function($scope, $http) {
       .text(currentYear);
 
   }
+
+  function loadSites(sites) {
+
+    $scope.sites = sites;
+
+    for(var i = 0; i < sites.length; i++){
+        console.log(sites[i]);
+
+        for(var j = 0; j < sites[i].skills.length;j++){
+            console.log(sites[i].skills[j]);
+        }
+    }
+  }
 });
 
 /**
- * @ngdoc function
- * @name rath3rApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the rath3rApp
- */
+* @ngdoc function
+* @name rath3rApp.controller:MainCtrl
+* @description
+* # MainCtrl
+* Controller of the rath3rApp
+*/
 rath3rApp.controller('mainCtrl', function($scope, $http) {
 
-    // create a message to display in our view
-    $scope.message = '';
+  // create a message to display in our view
+  $scope.message = '';
+  $scope.posts = {
+    title: 'Loading'
+  };
 
-    $scope.posts = {
-        title: 'Loading'
-    };
+  $scope.loading = true;
+  $scope.posts = {};
 
-    $scope.loading = true;
+  var wordpressUrl = 'https://public-api.wordpress.com/rest/v1.1/sites/blog.rath3r.com/posts/';
 
-    $scope.posts = {};
+  $http.get(wordpressUrl).success(function(data) {
+    
+    //console.log(data);
+    $scope.posts = data.posts;
+    $scope.loading = false;
 
-    $http.get('https://public-api.wordpress.com/rest/v1.1/sites/blog.rath3r.com/posts/').
-        success(function(data) {
-
-            $scope.posts = data.posts;
-
-            $scope.loading = false;
-
-        }).
-        error(function() {
-            //data, status, headers, config
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-        });
-
+  }).error(function() {
+    //data, status, headers, config
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+  });
 });
+
 /**
  * @ngdoc function
  * @name rath3rApp.controller:MainCtrl
