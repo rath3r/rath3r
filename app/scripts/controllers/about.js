@@ -150,14 +150,29 @@ rath3rApp.controller('aboutCtrl', function($scope, $http) {
 
   function loadSites(sites) {
 
-    $scope.sites = sites;
+    //$scope.sites = sites;
 
-    for(var i = 0; i < sites.length; i++){
-        console.log(sites[i]);
+    // for(var i = 0; i < sites.length; i++){
+    //     console.log(sites[i]);
+    //
+    //     for(var j = 0; j < sites[i].skills.length;j++){
+    //         console.log(sites[i].skills[j]);
+    //     }
+    // }
 
-        for(var j = 0; j < sites[i].skills.length;j++){
-            console.log(sites[i].skills[j]);
-        }
-    }
+
   }
+
+  function beChart() {
+
+    var chart = d3.select("#be-sites")
+      .attr("width", "100%")
+      .attr("height", "200px;");
+
+    var data = [1, 1, 2, 3, 5, 8, 13, 21];
+    var arcs = d3.pie()(data);
+    console.log(arcs);
+  }
+
+  beChart();
 });

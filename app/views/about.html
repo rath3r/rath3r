@@ -46,15 +46,17 @@
   </div>
 </div>
 <div class="row">
+  <div class="col-md-6">
+    <svg id="be-sites" width="100%"></svg>
+  </div>
+  <div class="col-md-6">
+    <svg id="fe-sites" width="100%"></svg>
+  </div>
+</div>
+<div class="row">
   <div class="col-lg-12">
     <div id="loading">
       <img class="center" src="/images/loading.gif" ng-show="sitesLoader" />
-    </div>
-    <div class="site-listing col-md-4"  ng-repeat="site in sites">
-      <img src="http://dev.rath3rapi.com/uploads/thumbs/{{site.title}}.png" />
-      <a href="{{site.url}}">
-        <h4 ng-bind-html="site.title"></h4>
-      </a>
     </div>
   </div>
 </div>
