@@ -167,11 +167,11 @@ rath3rApp.controller('aboutCtrl', function($scope, $http) {
 
     var chart = d3.select("#be-sites")
       .attr("width", "100%")
-      .attr("height", "200px;");
+      .attr("height", "200px");
 
     var data = [1, 1, 2, 3, 5, 8, 13, 21];
-    var arcs = d3.pie()(data);
-    console.log(arcs);
+    //var arcs = d3.pie()(data);
+    // console.log(arcs);
   }
 
   beChart();
