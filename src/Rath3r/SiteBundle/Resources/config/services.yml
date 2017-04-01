@@ -1,0 +1,4 @@
+services:
+#    rath3r_site.example:
+#        class: Rath3r\SiteBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

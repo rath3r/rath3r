@@ -5,28 +5,12 @@ from a [wordpress][2] blog and from an API hosted on [data.rath3r.com][3].
 
 ## Version
 
-This is version 2.0 of the [rath3r][1] site. It represents a move from Vanilla
-to Angular.
-
-This project is generated with [yo angular generator][4] version 0.11.1.
+This is the Symfony version of the [rath3r][1] site. It represents a move from Angular 
+to Symfony. The earliest versions were using Vanilla.
 
 ## Initial Setup
 
-The `#/` was removed from the url by following these instructions -
-[pretty-urls-in-angularjs-removing-the-hashtag][5]
-
-Add to the `.htaccess` also stored in `app/`
-
-    RewriteEngine On
-    RewriteBase /
-    RewriteCond %{REQUEST_URI} !^(/index\.php|/img|/js|/css|/robots\.txt|/favicon\.ico)
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule . /index.html [L]
-
-## Build & development
-
-Run `grunt` for building and `grunt serve` for preview.
+`composer install`
 
 ## Notes
 

@@ -1,0 +1,3 @@
+rath3r_site_homepage:
+    path:     /
+    defaults: { _controller: Rath3rSiteBundle:Default:index }

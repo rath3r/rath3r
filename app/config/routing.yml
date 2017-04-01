@@ -1,0 +1,4 @@
+rath3r_site:
+    resource: "@Rath3rSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
