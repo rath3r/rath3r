@@ -2,7 +2,9 @@
   "name": "rath3r",
   "version": "0.3.0",
   "license": "GPL-3.0",
-  "dependencies": {},
+  "dependencies": {
+    "vue": "^2.2.6"
+  },
   "repository": {},
   "devDependencies": {
     "grunt": "^0.4.5",
