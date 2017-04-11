@@ -6,4 +6,9 @@ Feature: Home Page
   Scenario: View the home page
     Given that the home page exists
     When I visit rath3r.com
+    Then I should see the title
+
+  Scenario: View blog post listing on the home page
+    Given that the home page exists
+    When I visit rath3r.com
     Then I should see a listing of blog posts
