@@ -12,7 +12,7 @@ use Webmozart\Assert\Assert;
 /**
  * Defines application features from the specific context.
  */
-class HomePageContext implements Context
+class AboutPageContext implements Context
 {
     private $driver;
     private $session;
@@ -29,11 +29,10 @@ class HomePageContext implements Context
     }
 
     /**
-     * @Given that the home page exists
+     * @Given that the about page exists
      */
-    public function thatTheHomePageExists()
+    public function thatTheAboutPageExists()
     {
-
         $this->session->start();
         $this->session->visit($this->url);
         $statusCode = $this->session->getStatusCode();
@@ -42,36 +41,19 @@ class HomePageContext implements Context
     }
 
     /**
-     * @When I visit rath3r.com
+     * @When I visit rath3r.com\/about
      */
-    public function iVisitRathrCom()
+    public function iVisitRathrComAbout()
     {
-        $this->page = $this->session->getPage();
+        throw new PendingException();
     }
 
     /**
-     * @Then I should see a listing of blog posts
+     * @Then I should see the about title
      */
-    public function iShouldSeeAListingOfBlogPosts()
+    public function iShouldSeeTheAboutTitle()
     {
-        $posts = $this->page->find('css', '#blog-posts');
-
-        if (null === $posts) {
-            throw new \Exception('The blog posts element is not found');
-        }
+        throw new PendingException();
     }
-
-    /**
-     * @Then I should see the title
-     */
-    public function iShouldSeeTheTitle()
-    {
-        $h1 = $this->page->find('css', 'h1');
-
-        if (null === $h1) {
-            throw new \Exception('The h1 element is not found');
-        }
-    }
-
 
 }
