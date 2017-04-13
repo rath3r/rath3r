@@ -3,6 +3,7 @@
 namespace spec\Rath3r\SiteBundle\Controller;
 
 use Rath3r\SiteBundle\Controller\IndexController;
+
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

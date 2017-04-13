@@ -73,5 +73,13 @@ class HomePageContext implements Context
         }
     }
 
+    /**
+     * @Then the tile should read rath3r
+     */
+    public function theTileShouldReadRathr()
+    {
+        $h1 = $this->page->find('css', 'h1');
+        Assert::eq($h1->getHtml(), 'rath3r', 'The tile must be %2$s. Got: %s');
+    }
 
 }
