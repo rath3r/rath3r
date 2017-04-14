@@ -4,7 +4,7 @@ namespace Rath3r\SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class HomeController extends Controller
 {
     public function indexAction()
     {
