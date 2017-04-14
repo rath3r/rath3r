@@ -1,0 +1,15 @@
+default:
+    formatters:
+        pretty: true
+    suites:
+        default:
+            contexts:
+                - FeatureContext:
+                      ssh: 'ssh_key'
+                      urls: [ 'http://url1', 'http://url2' ]
+                - HomePageContext:
+                      url: 'dev.rath3r.com/app_dev.php'
+                - AboutPageContext:
+                      url: 'dev.rath3r.com/app_dev.php/about'
+                - TrainsPageContext:
+                      url: 'dev.rath3r.com/app_dev.php/trains'
