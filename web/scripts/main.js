@@ -15,13 +15,11 @@ var rath3rApp = angular.module('rath3rApp', [
 
 rath3rApp.config(function($routeProvider, $locationProvider) {
     $routeProvider
-
         // route for the home page
         .when('/', {
             templateUrl : 'views/main.html',
             controller  : 'mainCtrl'
         })
-
         .when('/post/:id', {
             templateUrl: 'views/post.html',
             controller: 'postCtrl'

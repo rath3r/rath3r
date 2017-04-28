@@ -9,10 +9,6 @@ rath3r_site_aboutpage:
       _controller: Rath3rSiteBundle:About:index
 
 rath3r_site_trainspage:
-    path:     /trians
+    path:     /trains
     defaults:
       _controller: Rath3rSiteBundle:Trains:index
-
-_index:
-    path:     index
-    defaults: { _controller: Rath3rSiteBundle:About:Index }

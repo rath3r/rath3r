@@ -4,11 +4,11 @@ namespace Rath3r\SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class AboutController extends Controller
+class TrainsController extends Controller
 {
     public function IndexAction()
     {
-        return $this->render('about/index.html.twig');
+        return $this->render('trains/index.html.twig');
     }
 
 }
