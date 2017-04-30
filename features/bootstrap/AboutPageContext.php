@@ -45,7 +45,7 @@ class AboutPageContext implements Context
      */
     public function iVisitRathrComAbout()
     {
-        throw new PendingException();
+        $this->page = $this->session->getPage();
     }
 
     /**
@@ -53,7 +53,11 @@ class AboutPageContext implements Context
      */
     public function iShouldSeeTheAboutTitle()
     {
-        throw new PendingException();
+        $h2 = $this->page->find('css', 'h2');
+
+        if (null === $h2) {
+            throw new \Exception('The h2 element is not found');
+        }
     }
 
 }

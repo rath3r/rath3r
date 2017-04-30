@@ -12,7 +12,7 @@ use Webmozart\Assert\Assert;
 /**
  * Defines application features from the specific context.
  */
-class HomePageContext implements Context
+class TrainsPageContext implements Context
 {
     private $driver;
     private $session;
@@ -29,9 +29,9 @@ class HomePageContext implements Context
     }
 
     /**
-     * @Given that the home page exists
+     * @Given that the trains page exists
      */
-    public function thatTheHomePageExists()
+    public function thatTheTrainsPageExists()
     {
 
         $this->session->start();
@@ -42,44 +42,23 @@ class HomePageContext implements Context
     }
 
     /**
-     * @When I visit rath3r.com
+     * @When I visit rath3r.com\/trains
      */
-    public function iVisitRathrCom()
+    public function iVisitRathrComTrains()
     {
         $this->page = $this->session->getPage();
     }
 
     /**
-     * @Then I should see a listing of blog posts
+     * @Then I should see the trains title
      */
-    public function iShouldSeeAListingOfBlogPosts()
+    public function iShouldSeeTheTrainsTitle()
     {
-        $posts = $this->page->find('css', '#blog-posts');
+        $h2 = $this->page->find('css', 'h2');
 
-        if (null === $posts) {
-            throw new \Exception('The blog posts element is not found');
+        if (null === $h2) {
+            throw new \Exception('The h2 element is not found');
         }
-    }
-
-    /**
-     * @Then I should see the title
-     */
-    public function iShouldSeeTheTitle()
-    {
-        $h1 = $this->page->find('css', 'h1');
-
-        if (null === $h1) {
-            throw new \Exception('The h1 element is not found');
-        }
-    }
-
-    /**
-     * @Then the tile should read rath3r
-     */
-    public function theTileShouldReadRathr()
-    {
-        $h1 = $this->page->find('css', 'h1 a');
-        Assert::eq($h1->getHtml(), 'rath3r', 'The tile must be %2$s. Got: %s');
     }
 
 }
