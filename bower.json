@@ -1,0 +1,21 @@
+{
+  "name": "gulp-test",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Thomas Meehan thom.meehan@gmail.com"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/rath3r/quick-gulp",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
