@@ -1,5 +1,0 @@
-services:
-    rath3r_site.index:
-        class: Rath3r\SiteBundle\Controller\Index
-        arguments:
-            - '@templating'

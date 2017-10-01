@@ -1,7 +1,0 @@
-suites:
-    roh_suite:
-        namespace: Rath3r
-        psr4_prefix: Rath3r
-        src_path: %paths.config%/src/Rath3r
-
-formatter.name: pretty
