@@ -29,7 +29,7 @@ var App = (function(){
         },
         drawArcs = function (){
             ctx = canvas.getContext('2d');
-    
+
             for (var i = 0; i < 4; i++) {
                 for (var j = 0; j < 3; j++) {
                     ctx.beginPath();
@@ -39,9 +39,9 @@ var App = (function(){
                     var startAngle = 0; // Starting point on circle
                     var endAngle = Math.PI + (Math.PI * j) / 2; // End point on circle
                     var anticlockwise = i % 2 !== 0; // clockwise or anticlockwise
-            
+
                     ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
-            
+
                     if (i > 1) {
                         ctx.fill();
                     } else {
@@ -76,31 +76,31 @@ var App = (function(){
             var sec = now.getSeconds();
             var milli = now.getMilliseconds();
             var len = 100;
-            
+
             ctx.save();
             ctx.clearRect(0, 0, width, height);
-            
+
             ctx.beginPath();
             ctx.strokeStyle = 'black';
             ctx.lineWidth = 1;
             ctx.moveTo(startX, startY);
             ctx.lineTo(endX, endY);
             ctx.stroke();
-            
+
             ctx.save();
             if (!posX) {
                 posX = startX//window.requestAnimationFrame(drawTrain);;
             } else {
                 if (posX < (endX - len)) {
                     posX = posX + dx;
-                    
+
                     drawEnd('green');
                 } else {
                     drawEnd('red');
                     window.cancelAnimationFrame(req);
                 }
             }
-            
+
             if (!posY) {
                 posY = 75;
             }
@@ -112,21 +112,21 @@ var App = (function(){
             //             x    y   len  hei
             ctx.strokeRect(posX, posY, len, 50);
             ctx.clearRect((posX + 1), (posY + 1), len - 2, 50)
-            
+
             ctx.restore();
-            
+
             req = window.requestAnimationFrame(drawTrain);
         },
         addControls = function() {
             var speedEl = document.getElementById('speed');
             var speedValEl = document.getElementById('speedVal');
             var resetEl = document.getElementById('reset');
-            
+
             speedEl.addEventListener("input", function() {
                 dx = speedEl.value / 8;
                 speedValEl.value = dx;
             }, false);
-            
+
             resetEl.addEventListener("click", function() {
                 posX = startX;
             }, false);

@@ -31,11 +31,15 @@ gulp.task('clean', function () {
 });
 
 gulp.task('twig', function () {
-    return gulp.src('views/index.twig')
+    return gulp.src([
+      'views/*.twig',
+      'views/pages/*.twig'
+    ])
         .pipe(twig({
             data: {
                 title: 'rath3r',
                 author: packagejson.author,
+                description: 'The rath3r site',
                 benefits: [
                     'Fast',
                     'Flexible',

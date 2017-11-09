@@ -3,17 +3,18 @@
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta name="description" content="A quick gulp setup"/>
+    <meta name="description" content="{{ description }}"/>
     <meta name="author" content="{{ author }}"/>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-
     <title>{{ title }}</title>
     <link href="styles/main.css" rel="stylesheet" />
 </head>
 <body>
 <section class="container">
-    {% block page %}
-    {% endblock %}
+  {% include 'header.twig' %}
+  {% include 'nav.twig' %}
+  {% block page %}
+  {% endblock %}
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="scripts/bootstrap.min.js"></script>
