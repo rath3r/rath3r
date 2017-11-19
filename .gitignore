@@ -17,7 +17,6 @@
 node_modules
 .tmp
 .sass-cache
-bower_components
 .idea
 rath3r.github.io/
 dist

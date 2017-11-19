@@ -2,7 +2,7 @@
 
 var gulp = require('gulp'),
   connect = require('gulp-connect'),
-  less = require('gulp-less'),
+  sass = require('gulp-sass'),
   twig = require('gulp-twig'),
   concat = require('gulp-concat'),
   clean = require('gulp-clean'),
@@ -19,7 +19,7 @@ gulp.task('webserver', function() {
 
 gulp.task('livereload', function() {
   gulp.src([
-      'assest/styles/*.less',
+      'assest/styles/*.scss',
       'views/*.twig'
     ]).pipe(watch())
     .pipe(connect.reload());
@@ -51,9 +51,9 @@ gulp.task('twig', function () {
         .pipe(connect.reload());
 });
 
-gulp.task('less', function() {
-  gulp.src('assets/styles/main.less')
-    .pipe(less())
+gulp.task('sass', function() {
+  gulp.src('assets/styles/main.scss')
+    .pipe(sass())
     .pipe(gulp.dest('dist/styles'))
     .pipe(connect.reload());
 });
@@ -66,19 +66,20 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('bootstrap', function() {
-  return gulp.src('./assets/bower_components/bootstrap/dist/js/bootstrap.min.js')
+
+  return gulp.src('./node_modules/bootstrap/dist/js/bootstrap.min.js')
     .pipe(gulp.dest('./dist/scripts'));
 });
 
 gulp.task('watch', function() {
-    gulp.watch('assets/styles/*.less', ['less']);
+    gulp.watch('assets/styles/*.scss', ['less']);
     gulp.watch('views/**/*.twig', ['twig']);
     gulp.watch('assets/scripts/**/*.js', ['scripts']);
 });
 
 gulp.task('default', [
   'twig',
-  'less',
+  'sass',
   'scripts',
   'bootstrap',
   'webserver',
