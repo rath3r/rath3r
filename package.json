@@ -4,6 +4,7 @@
   "description": "The rath3r site",
   "repository": "https://github.com/rath3r/rath3r",
   "scripts": {
+    "run": "gulp",
     "test": "mocha --reporter=nyan assets/specs/*"
   },
   "author": "Thomas Meehan",

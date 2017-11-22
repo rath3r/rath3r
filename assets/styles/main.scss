@@ -1,1 +1,22 @@
-@import "node_modules/bootstrap/scss/bootstrap.scss"
+@import 'colors.scss';
+@import 'header.scss';
+@import 'nav.scss';
+
+body{
+
+}
+
+#body {
+  .form-group {
+    label{
+      margin-bottom: 10px;
+    }
+    input {
+      margin: 10px 0;
+    }
+  }
+}
+#canvas {
+  //border: 1px solid @black;
+  height: 300px;
+}
