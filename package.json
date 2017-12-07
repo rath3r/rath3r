@@ -16,7 +16,8 @@
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^5.0.0",
     "gulp-sass": "^3.1.0",
-    "gulp-twig": "^0.5.0"
+    "gulp-twig": "^0.5.0",
+    "gulp-uglify": "^3.0.0"
   },
   "main": "index.js",
   "dependencies": {

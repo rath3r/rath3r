@@ -7,7 +7,8 @@ var gulp = require('gulp'),
   concat = require('gulp-concat'),
   clean = require('gulp-clean'),
   fs = require('fs'),
-  packagejson = JSON.parse(fs.readFileSync('./package.json'));;
+  packagejson = JSON.parse(fs.readFileSync('./package.json'));
+var uglify = require('gulp-uglify');
 
 
 gulp.task('webserver', function() {
@@ -59,16 +60,47 @@ gulp.task('sass', function() {
 });
 
 gulp.task('scripts', function() {
-  return gulp.src('assets/scripts/**/*.js')
-    .pipe(concat('main.js'))
+  gulp.src('assets/scripts/*.js')
     .pipe(gulp.dest('dist/scripts/'))
     .pipe(connect.reload());
 });
 
-gulp.task('bootstrap', function() {
+gulp.task('scripts-uglify', function () {
+  gulp.src('assets/scripts/*.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/scripts')
+  );
+});
 
-  return gulp.src('./node_modules/bootstrap/dist/js/bootstrap.min.js')
-    .pipe(gulp.dest('./dist/scripts'));
+gulp.task('minify-styles', function () {
+  gulp.src('assets/styles/main.scss')
+    .pipe(sass({outputStyle: 'compressed'}))
+    .pipe(gulp.dest('dist/styles')
+  );
+});
+
+gulp.task('twig-prod', function () {
+  gulp.src(['views/*.twig', 'views/pages/*.twig'])
+    .pipe(twig({
+      data: {
+        title: 'rath3r',
+        author: packagejson.author,
+        description: 'The rath3r site',
+        benefits: [
+          'Fast',
+          'Flexible',
+          'Secure'
+        ]
+      }
+    }))
+    .pipe(gulp.dest('dist/')
+  );
+});
+
+gulp.task('bootstrap', function() {
+  gulp.src('./node_modules/bootstrap/dist/js/bootstrap.min.js')
+    .pipe(gulp.dest('./dist/scripts')
+  );
 });
 
 gulp.task('watch', function() {
@@ -81,7 +113,13 @@ gulp.task('default', [
   'twig',
   'sass',
   'scripts',
-  'bootstrap',
   'webserver',
   'watch'
+]);
+
+gulp.task('build', [
+  'clean',
+  'twig-prod',
+  'scripts-uglify',
+  'minify-styles',
 ]);
