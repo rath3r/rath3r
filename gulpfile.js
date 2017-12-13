@@ -65,7 +65,7 @@ gulp.task('scripts', function() {
     .pipe(connect.reload());
 });
 
-gulp.task('scripts-uglify', function () {
+gulp.task('uglify-scripts', function () {
   gulp.src('assets/scripts/*.js')
     .pipe(uglify())
     .pipe(gulp.dest('dist/scripts')
@@ -120,6 +120,6 @@ gulp.task('default', [
 gulp.task('build', [
   'clean',
   'twig-prod',
-  'scripts-uglify',
+  'uglify-scripts',
   'minify-styles',
 ]);

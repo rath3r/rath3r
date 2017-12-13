@@ -1,0 +1,11 @@
+{
+	"title": "Rath3r transfered size",
+	"versions": [{
+		"version": 1.8,
+		"size": 95.8,
+		"requests": 11,
+		"time": 5.63,
+		"DOMContentLoaded": 5.52,
+		"Load": 5.52
+	}]
+}

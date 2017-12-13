@@ -11,3 +11,11 @@
 
 </div>
 {% endblock %}
+
+{% block scripts -%}
+<script src="scripts/About.js"></script>
+<script>
+var about = new About();
+about.init();
+</script>
+{% endblock %}

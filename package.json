@@ -5,7 +5,8 @@
   "repository": "https://github.com/rath3r/rath3r",
   "scripts": {
     "run": "gulp",
-    "test": "mocha --reporter=nyan assets/specs/*"
+    "build": "gulp build",
+    "test": "mocha -r jsdom-global/register --reporter=nyan spec/*"
   },
   "author": "Thomas Meehan",
   "license": "ISC",
@@ -17,7 +18,9 @@
     "gulp-connect": "^5.0.0",
     "gulp-sass": "^3.1.0",
     "gulp-twig": "^0.5.0",
-    "gulp-uglify": "^3.0.0"
+    "gulp-uglify": "^3.0.0",
+    "jsdom": "11.5.1",
+    "jsdom-global": "3.0.2"
   },
   "main": "index.js",
   "dependencies": {
