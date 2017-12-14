@@ -1,7 +1,9 @@
+var $ = require("jquery");
+
 function About() {
 }
 About.prototype.init = function() {
-  console.log("init about");
+
   this.initialised = true;
   this.jsonData = this.loadJson();
 };
