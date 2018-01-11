@@ -1,4 +1,7 @@
 {% extends "../layouts/layout.twig" %}
+{% block styles -%}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin=""/>
+{% endblock %}
 
 {% block page -%}
 <div class="row">
@@ -8,6 +11,20 @@
     </div>
 </div>
 <div id="body" class="row">
-
+  <div class="col-md-4">
+      <h3>Day in September</h3>
+  </div>
+  <div class="col-md-8">
+    <div id="map"></div>
+  </div>
 </div>
+{% endblock %}
+
+{% block scripts -%}
+<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
+<script src="scripts/Maps.js"></script>
+<script>
+var maps = new Maps();
+maps.init();
+</script>
 {% endblock %}

@@ -5,4 +5,4 @@ App.prototype.init = function() {
   this.initialised = true;
 };
 
-module.exports = App;
+//module.exports = App;
