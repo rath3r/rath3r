@@ -20,6 +20,5 @@ node_modules
 .idea
 rath3r.github.io/
 dist
-assets/data/*.gpx
-assets/data/*.geojson
+assets/data/*
 
