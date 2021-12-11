@@ -1,32 +1,47 @@
 {
   "name": "rath3r",
-  "version": "3.0.1",
-  "description": "The rath3r site",
+  "version": "4.0.0",
+  "description": "The web presence of Thomas Meehan on rath3r.com",
   "repository": "https://github.com/rath3r/rath3r",
-  "scripts": {
-    "run": "gulp",
-    "build": "gulp build",
-    "test": "mocha -r jsdom-global/register --reporter=nyan spec/*"
-  },
   "author": "Thomas Meehan",
   "license": "ISC",
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2",
-    "gulp-concat": "^2.6.0",
-    "gulp-connect": "^5.0.0",
-    "gulp-sass": "^3.1.0",
-    "gulp-twig": "^0.5.0",
-    "gulp-uglify": "^3.0.0",
-    "jsdom": "11.5.1",
-    "jsdom-global": "3.0.2",
-    "sinon": "^4.1.3",
-    "jquery": "^3.2.1"
-  },
-  "main": "index.js",
+  "private": true,
   "dependencies": {
-    "bootstrap": "4.0.0-beta.2",
-    "popper.js": "^1.12.9"
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "web-vitals": "^1.1.2"
+  },
+  "devDependencies": {
+    "react-scripts": "4.0.3",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "prod-audit": "npm audit --production"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

@@ -1,53 +1,53 @@
-#Rath3r
+# Rath3r
 
 This is the frontend main page of rath3r.com.
 
-A quick setup using [Gulp][1] and flat file sites. A tutorial on [tutsplus][2]
-was used for some pointers. [addyosmani.com/largescalejavascript][11] inspired
-the modules.
+A new blank slate:
 
-Usage:
+## Installation
 
-* `npm install` to setup.
-* `npm test` to test.
+[Create React App][1] was used to add React `npx create-react-app .`
 
-## Features
+To remove the the critical vulnerabilities error move `react-scripts` to devDependencies and run
+x``npm audit --production`
 
-### Connect
+https://github.com/facebook/create-react-app/issues/11174
 
-A server is created using [gulp-connect][3] which has watch and livereload
-configured.
+## Available Scripts
 
-### Clean
+In the project directory, you can run:
 
-Gotta [clean][8] the dist before building.
+### `npm start`
 
-### Less
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-[Less][4] for the styles although [Sass][5] could be installed just as quick.
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-    npm install gulp-sass --save-dev
+### `npm test`
 
-### Twig
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Rather than just using `.html` files [twig][6] is being used for templates.
+### `npm run build`
 
-### Concat
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-Currently using [concat][7] to pull all the javascript together.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-### Bootstrap
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-For quick prototyping [Bootstrap][9] has been added via [Yarn][10].
+### `npm run eject`
 
-[1]:http://gulpjs.com/
-[2]:http://code.tutsplus.com/tutorials/gulp-as-a-development-web-server--cms-20903
-[3]:https://www.npmjs.com/package/gulp-connect
-[4]:https://www.npmjs.com/package/gulp-less
-[5]:https://www.npmjs.com/package/gulp-sass
-[6]:https://www.npmjs.com/package/gulp-twig
-[7]:https://github.com/contra/gulp-concat
-[8]:https://www.npmjs.com/package/gulp-clean
-[9]:http://getbootstrap.com/
-[10]:https://yarnpkg.com/
-[11]:https://addyosmani.com/largescalejavascript/
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+[1]: https://github.com/facebook/create-react-app
