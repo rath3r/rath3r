@@ -13,6 +13,11 @@ x``npm audit --production`
 
 https://github.com/facebook/create-react-app/issues/11174
 
+## Dependencies
+
+"node": "lts"
+Currenly16.13.1
+
 ## Available Scripts
 
 In the project directory, you can run:
