@@ -1,0 +1,1 @@
+{"version":3,"file":"tsc.js","sourceRoot":"","sources":["../src/test-module.ts","../src/app.ts"],"names":[],"mappings":";;;;;;;YAAI,SAAS,GAAG,CAAC,QAAgB,EAAE,MAAc,EAAU,EAAE;gBACzD,OAAO,GAAI,QAAS,WAAY,MAAO,UAAU,CAAC;YACtD,CAAC,CAAA;;;;;;;;;;;;;;;;YCAK,KAAK,GAAW,OAAO,CAAC;YAExB,MAAM,GAAG,QAAQ,CAAC,SAAS,CAAC;YAIlC,OAAO,CAAC,GAAG,CAAC,QAAQ,CAAC,SAAS,CAAC,CAAC"}

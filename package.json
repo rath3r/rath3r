@@ -6,14 +6,21 @@
   "author": "Thomas Meehan",
   "license": "ISC",
   "private": true,
-  "dependencies": {
-    
-  },
+  "type": "module",
   "scripts": {
-    "start": "node server/server.js",
-    "prod-audit": "npm audit --production"
+    "start": "node ./server/bin/www.js",
+    "prod-audit": "npm audit --production",
+    "dev": "tsc -w"
   },
   "devDependencies": {
-    
+    "@types/cookie-parser": "^1.4.2",
+    "@types/morgan": "^1.9.3",
+    "@types/typescript": "^2.0.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
   }
 }
