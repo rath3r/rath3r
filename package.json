@@ -7,19 +7,13 @@
   "license": "ISC",
   "private": true,
   "dependencies": {
-    "@types/jest": "^27.0.3",
-    "@types/node": "^16.11.13",
-    "@types/react": "^17.0.37",
-    "@types/react-dom": "^17.0.11",
-    "typescript": "^4.5.4"
+    
   },
   "scripts": {
     "start": "node server/server.js",
     "prod-audit": "npm audit --production"
   },
   "devDependencies": {
-    "@types/express": "^4.17.13",
-    "express": "^4.17.1",
-    "ts-node": "^10.4.0"
+    
   }
 }
