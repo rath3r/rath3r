@@ -18,6 +18,8 @@ https://github.com/facebook/create-react-app/issues/11174
 "node": "lts"
 Currenly16.13.1
 
+https://www.freecodecamp.org/news/how-to-enable-es6-and-beyond-syntax-with-node-and-express-68d3e11fe1ab/
+
 ## Available Scripts
 
 In the project directory, you can run:
