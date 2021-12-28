@@ -2,7 +2,7 @@
 
 This is the frontend main page of rath3r.com.
 
-A new blank slate:
+A typescript enabled express server that can be
 
 ## Installation
 

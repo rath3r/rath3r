@@ -5,12 +5,15 @@
 import fs from 'fs-extra';
 import Logger from 'jet-logger';
 import childProcess from 'child_process';
+import webpack from 'webpack';
 
 // Setup logger
 const logger = new Logger();
 logger.timestamp = false;
 
-
+const compiler = webpack({
+    // [Configuration Object](/configuration/)
+});
 
 
 (async () => {
@@ -18,12 +21,13 @@ logger.timestamp = false;
         // Remove current build
         await remove('./dist/');
         // Copy front-end files
-        await copy('./src/public', './dist/public');
+        //await copy('./src/public', './dist/public');
         await copy('./src/views', './dist/views');
         // Copy production env file
         await copy('./src/pre-start/env/production.env', './dist/pre-start/env/production.env');
         // Copy back-end files
         await exec('tsc --build tsconfig.prod.json', './')
+        //compiler.run(() => {});
     } catch (err) {
         logger.err(err);
     }
@@ -61,3 +65,4 @@ function exec(cmd: string, loc: string): Promise<void> {
         });
     });
 }
+  
