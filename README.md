@@ -4,6 +4,8 @@ This is the frontend main page of rath3r.com.
 
 A typescript enabled express server that can be
 
+`create-react-app --template typescript` is working again. Move to that!
+
 ## Installation
 
 [Create React App][1] was used to add React `npx create-react-app .`

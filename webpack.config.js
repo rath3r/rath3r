@@ -8,5 +8,12 @@ module.exports = {
   },
   output: {
     filename: 'public/scripts/app.js',
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    compress: true,
+    port: 5000,
   }
 };
