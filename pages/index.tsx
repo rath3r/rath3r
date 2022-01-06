@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import Header from '../components/header'
 
 const Home: NextPage = () => {
   return (
@@ -13,6 +14,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        <Header></Header>
+
         <h1 className={styles.title}>
           Rath3r
         </h1>
