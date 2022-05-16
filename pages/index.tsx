@@ -5,35 +5,25 @@ import Header from '../components/header'
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
-      <Head>
+    <>
+    <Head>
         <title>rath3r</title>
         <meta name="description" content="The rath3r site"/>
         <meta name="author" content="Thomas Meehan"/>
         <link rel="icon" href="/favicon.ico?v=1" />
       </Head>
-
+    <div className={styles.container}>
+    <Header></Header>
       <main className={styles.main}>
-        <Header></Header>
-
-        <h1 className={styles.title}>
-          Rath3r
-        </h1>
-
         <p className={styles.description}>
             The portfolio site of a software engineer specialising in web applications. 
         </p>
-        <ul>
-          <li>Wouldn't you <a href="https://rath3r.com">rath3r?</a></li>
-          <li>What would you <a href="https://rath3r.com">rath3r?</a></li>
-        </ul>
-          
       </main>
-
       <footer className={styles.footer}>
       </footer>
     </div>
+    </>
   )
 }
 
-export default Home
+export default Home;
