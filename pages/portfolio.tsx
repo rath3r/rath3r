@@ -5,16 +5,17 @@ import Header from '../components/header'
 import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid'
 import Image from 'next/image'
 
-// roh_oct_16.png
-// roh_nov_18.png
-// roh_jan_22.png
+
+const thumbnail = (params: any): JSX.Element => 
+  <Image src={params.value} width='50px' height='50px' />
+;
 
 const columns: GridColDef[] = [
-  { field: 'date', headerName: 'Date', type: 'date'},
-  { field: 'name', headerName: 'Name', type: 'string'},
-  { field: 'stack', headerName: 'Stack', type: 'string'},
-  { field: 'tech', headerName: 'Technology', type: 'array'},
-  { field: 'image', headerName: 'Image', type: 'image', renderCell: (params) => <Image src={params.value} width='50px' height='50px' />},
+  { field: 'date', headerName: 'Date', type: 'date', flex: 1},
+  { field: 'name', headerName: 'Name', type: 'string', flex: 1},
+  { field: 'stack', headerName: 'Stack', type: 'string', flex: 1},
+  { field: 'tech', headerName: 'Technology', type: 'array', flex: 1},
+  { field: 'image', headerName: 'Image', type: 'image', renderCell: thumbnail, flex: 1},
 ];
 
 const rows: GridRowsProp = [
@@ -46,8 +47,6 @@ const rows: GridRowsProp = [
   { id: 26, date: '01/11/2018', name: 'Royal Opera House', stack: 'Fullstack', tech:['JS', 'Mobile', 'html', 'css'], image: '/portfolio/roh_nov_18.png' },
   { id: 27, date: '01/01/2022', name: 'Royal Opera House', stack: 'Fullstack', tech:['JS', 'Mobile', 'html', 'css'], image: '/portfolio/roh_jan_22.png' },
 ];
-
-
 
 const Home: NextPage = () => {
 
